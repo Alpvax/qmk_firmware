@@ -18,11 +18,11 @@ enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
     KC_COLEMAK,
     KC_GAME,
-    KC_PRVWD,
-    KC_NXTWD,
-    KC_LSTRT,
+    KC_PRVW,
+    KC_NXTW,
+    KC_LSTT,
     KC_LEND,
-    KC_DLINE
+    KC_DLIN
 };
 
 
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|-------.    ,-------|------+------+------+------+------+------|
  * |   Z  | LCtr |   X  |   C  |   V  |   B  |  N/F  |    |  N/F  |   N  |   M  |   ,  |   .  |   /  |RShift|
  * `-------------+------+------+------+------+--------    --------+------+------+------+------+-------------'
- *               | LGUI | LAlt | LCTR |/LOWER/ Space |    | Enter \RAISE\| RCTR | RAlt | RGUI |
+ *               | LGUI | LAlt | LCTR |/ NUBS/ Space |    | Enter \RAISE\| RCTR | RAlt | RGUI |
  *               `--------------------'-----'--------'      `------'-----'--------------------'
  */
 [_GAME] = LAYOUT(
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   KC_T,   KC_Q,    KC_W,    KC_E,    KC_R,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
   KC_TAB,   KC_LSFT,   KC_A,    KC_S,    KC_D,    KC_F,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
   KC_Z,  KC_LCTL,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,     XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                 MO(_LOWER), KC_LGUI,KC_LALT,KC_LCTL, KC_SPC,      KC_ENT,  MO(_RAISE), KC_RCTL, KC_RALT, KC_RGUI
+                 MO(_LOWER), KC_LGUI,KC_LALT,KC_NUBS, KC_SPC,      KC_ENT,  MO(_RAISE), KC_RCTL, KC_RALT, KC_RGUI
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -130,20 +130,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Esc  | Ins  | Pscr | Menu |      |      |                    |      | PWrd |  Up  | NWrd | DLine| Bspc |
+ * | Esc  | Ins  | Pscr | Menu |      |      |                    | PgUp | LStrt| LEnd | PgDn | DLine| Bspc |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  | LAt  | LCtl |LShift|      | Caps |                    |      | Left | Down | Rigth|  Del | Bspc |
+ * | Tab  | LAt  | LCtl |LShift|      | Caps |                    | Left | Down |  Up  | Right| Bspc |  Del |
  * |------+------+------+------+------+------|-------.    ,-------|------+------+------+------+------+------|
- * |Shift | Undo |  Cut | Copy | Paste|      |  N/F  |    |  N/F  |      | LStr |      | LEnd |      | Shift|
+ * |Shift | Undo |  Cut | Copy | Paste|      |  N/F  |    |  N/F  |      | PWrd | NWrd | LEnd |      | Shift|
  * `-------------+------+------+------+------+-------|    |-------+------+------+------+------+-------------'
  *               | LGUI | LAlt | LCTR |/LOWER/ Space |    | Enter \RAISE\| RCTR | RAlt | RGUI |
  *               `--------------------'-----'--------'      `------'-----'--------------------'
  */
 [_RAISE] = LAYOUT(
-  _______, _______ , _______ , _______ , _______ , _______,                           _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______,  KC_INS,  KC_PSCR,   KC_APP,  XXXXXXX, XXXXXXX,                        KC_PGUP, KC_PRVWD,   KC_UP, KC_NXTWD,KC_DLINE, KC_BSPC,
-  _______, KC_LALT,  KC_LCTL,  KC_LSFT,  XXXXXXX, KC_CAPS,                       KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, KC_BSPC,
-  _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, XXXXXXX,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,   XXXXXXX, _______,
+  _______,_______,_______,_______,_______,_______,                           _______,  _______  , _______,  _______ ,  _______ ,_______,
+  _______, KC_INS,KC_PSCR, KC_APP,XXXXXXX,XXXXXXX,                        KC_PGUP, KC_LSTT, KC_LEND, KC_PGDN, KC_DLIN, KC_BSPC,
+  _______,KC_LALT,KC_LCTL,KC_LSFT,XXXXXXX,KC_CAPS,                       KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_BSPC,  KC_DEL,
+  _______,KC_UNDO, KC_CUT,KC_COPY,KC_PASTE,KC_PASTE,_______,       _______,  XXXXXXX, KC_PRVW, KC_NXTW, XXXXXXX,   XXXXXXX, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 /* EXTEND
@@ -161,9 +161,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_EXTEND] = LAYOUT(
   _______, _______ , _______ , _______ , _______ , _______,                           _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______,  KC_INS,  KC_PSCR,   KC_APP,  XXXXXXX, XXXXXXX,                        KC_PGUP, KC_PRVWD,   KC_UP, KC_NXTWD,KC_DLINE, KC_BSPC,
+  _______,  KC_INS,  KC_PSCR,   KC_APP,  XXXXXXX, XXXXXXX,                        KC_PGUP, KC_PRVW,   KC_UP, KC_NXTW,KC_DLIN, KC_BSPC,
   _______, KC_LALT,  KC_LCTL,  KC_LSFT,  XXXXXXX, KC_CAPS,                       KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, KC_BSPC,
-  _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, XXXXXXX,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,   XXXXXXX, _______,
+  _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, XXXXXXX,  _______,       _______,  XXXXXXX, KC_LSTT, XXXXXXX, KC_LEND,   XXXXXXX, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 /* ADJUST
@@ -202,9 +202,11 @@ static void render_logo(void) {
 
 static void print_status_narrow(void) {
     // Print current mode
-    oled_write_P(PSTR("\n\n"), false);
-    oled_write_ln_P(PSTR("MODE"), false);
-    oled_write_ln_P(PSTR(""), false);
+    oled_write_P(PSTR(""), false);
+    oled_write_P(PSTR("Build"), false);
+    oled_write_ln_P(PSTR("01-24"), false);
+    oled_write_P(PSTR(""), false);
+    // oled_write_ln_P(PSTR("MODE"), false);
     if (keymap_config.swap_lctl_lgui) {
         oled_write_ln_P(PSTR("MAC"), false);
     } else {
@@ -237,6 +239,9 @@ static void print_status_narrow(void) {
             break;
         case _LOWER:
             oled_write_P(PSTR("Lower"), false);
+            break;
+        case _EXTEND:
+            oled_write_P(PSTR("Extnd"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("Adj\n"), false);
@@ -288,7 +293,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_GAME);
             }
             return false;
-        case KC_PRVWD:
+        case KC_PRVW:
             if (record->event.pressed) {
                 if (keymap_config.swap_lctl_lgui) {
                     register_mods(mod_config(MOD_LALT));
@@ -307,7 +312,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
-        case KC_NXTWD:
+        case KC_NXTW:
              if (record->event.pressed) {
                 if (keymap_config.swap_lctl_lgui) {
                     register_mods(mod_config(MOD_LALT));
@@ -326,7 +331,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
-        case KC_LSTRT:
+        case KC_LSTT:
             if (record->event.pressed) {
                 if (keymap_config.swap_lctl_lgui) {
                      //CMD-arrow on Mac, but we have CTL and GUI swapped
@@ -362,7 +367,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
-        case KC_DLINE:
+        case KC_DLIN:
             if (record->event.pressed) {
                 register_mods(mod_config(MOD_LCTL));
                 register_code(KC_BSPC);
