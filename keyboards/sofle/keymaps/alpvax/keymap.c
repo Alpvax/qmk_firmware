@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|-------.    ,-------|------+------+------+------+------+------|
  * |   Z  | LCtr |   X  |   C  |   V  |   B  |  N/F  |    |  N/F  |   N  |   M  |   ,  |   .  |   /  |RShift|
  * `-------------+------+------+------+------+--------    --------+------+------+------+------+-------------'
- *               | LGUI | LAlt | LCTR |/ NUBS/ Space |    | Enter \RAISE\| RCTR | RAlt | RGUI |
+ *               | LOWER| LAlt | LCTR |/ NUBS/ Space |    | Enter \RAISE\| RCTR | RAlt | RGUI |
  *               `--------------------'-----'--------'      `------'-----'--------------------'
  */
 [_GAME] = LAYOUT(
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  | LAt  | LCtl |LShift|      | Caps |                    | Left | Down |  Up  | Right| Bspc |  Del |
  * |------+------+------+------+------+------|-------.    ,-------|------+------+------+------+------+------|
- * |Shift | Undo |  Cut | Copy | Paste|      |  N/F  |    |  N/F  |      | PWrd | NWrd | LEnd |      | Shift|
+ * |Shift | Undo |  Cut | Copy | Paste|      |  N/F  |    |  N/F  |      | PWrd | NWrd |      |      | Shift|
  * `-------------+------+------+------+------+-------|    |-------+------+------+------+------+-------------'
  *               | LGUI | LAlt | LCTR |/LOWER/ Space |    | Enter \RAISE\| RCTR | RAlt | RGUI |
  *               `--------------------'-----'--------'      `------'-----'--------------------'
