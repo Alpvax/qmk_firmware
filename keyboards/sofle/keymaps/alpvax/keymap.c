@@ -11,6 +11,7 @@ enum sofle_layers {
     _LOWER,
     _RAISE,
     _EXTEND,
+    _NUMPAD,
     _ADJUST,
 };
 
@@ -62,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_BSPC,
   KC_TAB,   KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,  KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, XXXXXXX,      XXXXXXX,KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                 KC_LGUI,KC_LALT,KC_LCTL,MO(_LOWER), KC_SPC,        KC_ENT,  MO(_RAISE), KC_RCTL, KC_RALT, KC_RGUI
+                 KC_LGUI,MO(_NUMPAD),KC_LCTL,MO(_LOWER), KC_SPC,        KC_ENT,  MO(_RAISE), KC_RCTL, KC_RALT, KC_RGUI
 ),
 /*
  * QWERTY
@@ -83,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
   KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,     XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                 KC_LGUI,KC_LALT,KC_LCTL, MO(_LOWER), KC_SPC,      KC_ENT,  MO(_RAISE), KC_RCTL, KC_RALT, KC_RGUI
+                 KC_LGUI,MO(_NUMPAD),KC_LCTL, MO(_LOWER), KC_SPC,      KC_ENT,  MO(_RAISE), KC_RCTL, KC_RALT, KC_RGUI
 ),
 /*
  * GAME
@@ -104,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   KC_T,   KC_Q,    KC_W,    KC_E,    KC_R,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
   KC_TAB,   KC_LSFT,   KC_A,    KC_S,    KC_D,    KC_F,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
   KC_Z,  KC_LCTL,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,     XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                 MO(_LOWER), KC_LGUI,KC_LALT,KC_NUBS, KC_SPC,      KC_ENT,  MO(_RAISE), KC_RCTL, KC_RALT, KC_RGUI
+                 MO(_LOWER),KC_LGUI,KC_LALT,KC_NUBS, KC_SPC,      KC_ENT,  MO(_RAISE), KC_RCTL, KC_RALT, KC_RGUI
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -166,6 +167,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, XXXXXXX,  _______,       _______,  XXXXXXX, KC_LSTT, XXXXXXX, KC_LEND,   XXXXXXX, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
+/* NUMPAD
+ * ,----------------------------------------.                     ,-----------------------------------------.
+ * |      |      |      |      |      |      |                    |      |   D  |   E  |   F  |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |                    |   C  | Num7 | Num8 | Num9 |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |                    |   B  | Num4 | Num5 | Num6 |      |      |
+ * |------+------+------+------+------+------|-------.    ,-------|------+------+------+------+------+------|
+ * |      |      |      |      |      |      |  N/F  |    |  N/F  |   A  | Num1 | Num2 | Num3 |      |      |
+ * `-------------+------+------+------+------+-------|    |-------+------+------+------+------+-------------'
+ *               |      |      |      |/     /       |    |       \     \| Num0 |      |      |
+ *               `--------------------'-----'--------'      `------'-----'--------------------'
+ */
+[_NUMPAD] = LAYOUT(
+  _______, _______ , _______ , _______ , _______ , _______ ,                          _______ , KC_D    , KC_E    , KC_F    , _______ , _______,
+  _______, _______ , _______ , _______ , _______ , _______ ,                          KC_C    , KC_KP_7 , KC_KP_8 , KC_KP_9 , _______ , _______,
+  _______, _______ , _______ , _______ , _______ , _______ ,                          KC_B    , KC_KP_4 , KC_KP_5 , KC_KP_6 , _______ , _______,
+  _______, _______ , _______ , _______ , _______ , _______ , _______,       _______ , KC_A    , KC_KP_1 , KC_KP_2 , KC_KP_3 , _______ , _______,
+                     _______ , _______ , _______ , _______ , _______,       _______ , _______ , KC_KP_0 , _______ , _______
+),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |MACWIN|
@@ -204,7 +225,7 @@ static void print_status_narrow(void) {
     // Print current mode
     oled_write_P(PSTR(""), false);
     oled_write_P(PSTR("Build"), false);
-    oled_write_ln_P(PSTR("01-24"), false);
+    oled_write_ln_P(PSTR("02-15"), false);
     oled_write_P(PSTR(""), false);
     // oled_write_ln_P(PSTR("MODE"), false);
     if (keymap_config.swap_lctl_lgui) {
@@ -242,6 +263,9 @@ static void print_status_narrow(void) {
             break;
         case _EXTEND:
             oled_write_P(PSTR("Extnd"), false);
+            break;
+        case _NUMPAD:
+            oled_write_P(PSTR("Numpd"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("Adj\n"), false);
