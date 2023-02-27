@@ -8,3 +8,6 @@ for more options.
 
 // custom transport for displaying master version on both side
 // #define SPLIT_TRANSACTION_IDS_USER USER_SYNC_VER
+
+#undef TAPPING_TERM
+#define TAPPING_TERM 200
