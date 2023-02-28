@@ -4,7 +4,7 @@
 // #include "transactions.h"
 #include "version.h"
 
-#define NUM_SPC LT(_NUMPAD,KC_SPC)
+#define NUM_SPC LT(_NUMPAD, KC_SPC)
 #define SFT_RET RSFT_T(KC_ENT)
 #define MO_LWR MO(_LOWER)
 #define MO_RSE MO(_RAISE)
@@ -29,7 +29,8 @@ enum custom_keycodes {
     KC_NXTW,
     KC_LSTT,
     KC_LEND,
-    KC_DLWD
+    KC_DLWD,
+    KC_SRCH
 };
 
 
@@ -69,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_BSPC,
   KC_TAB,   KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,  KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, XXXXXXX,      XXXXXXX,KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                 KC_LGUI, KC_LALT, KC_LCTL, MO_LWR, NUM_SPC,       SFT_RET,  MO_RSE, KC_RCTL, KC_RALT, KC_RGUI
+                 KC_SRCH, KC_LALT, KC_LCTL, MO_LWR, NUM_SPC,       SFT_RET,  MO_RSE, KC_RCTL, KC_RALT, KC_RGUI
 ),
 /*
  * QWERTY
@@ -90,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
   KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,     XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                 KC_LGUI,KC_LALT,KC_LCTL, MO_LWR, NUM_SPC,      SFT_RET,  MO_RSE, KC_RCTL, KC_RALT, KC_RGUI
+                 KC_SRCH,KC_LALT,KC_LCTL, MO_LWR, NUM_SPC,      SFT_RET,  MO_RSE, KC_RCTL, KC_RALT, KC_RGUI
 ),
 /*
  * GAME
@@ -261,7 +262,7 @@ static void print_status_common(void) {
             oled_write_P(PSTR("Colmk"), false);
             break;
         case _GAME:
-            oled_write_P(PSTR("Game\n"), false);
+            oled_write_P(PSTR("Game "), false);
             break;
         default:
             oled_write_P(PSTR("Undef"), false);
@@ -271,7 +272,7 @@ static void print_status_common(void) {
     switch (get_highest_layer(layer_state)) {
         case _COLEMAK_DH:
         case _QWERTY:
-            oled_write_P(PSTR("Base\n"), false);
+            oled_write_P(PSTR("Base "), false);
             break;
         case _RAISE:
             oled_write_P(PSTR("Raise"), false);
@@ -289,9 +290,10 @@ static void print_status_common(void) {
             oled_write_P(PSTR("Adjst"), false);
             break;
         default:
-            oled_write_ln_P(PSTR("Undef"), false);
+            oled_write_P(PSTR("Undef"), false);
     }
-    oled_write_P(PSTR("\n\n"), false);
+    oled_advance_page(true);
+    oled_advance_page(true);
 }
 
 static void print_status_narrow(void) {
@@ -305,7 +307,8 @@ static void print_status_narrow(void) {
     if (get_mods() & MOD_MASK_SHIFT) {
         oled_write_ln_P(PSTR("Shift"), false);
     } else {
-        oled_write_ln_P(PSTR("\n"), false);
+        oled_advance_page(true);
+        oled_advance_page(true);
     }
     oled_write_ln_P(PSTR("CPSLK"), led_usb_state.caps_lock);
 }
@@ -352,10 +355,15 @@ bool oled_task_user(void) {
 #endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+    if (get_highest_layer(default_layer_state) != _GAME) {
+        state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+    }
+
+    return state;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static uint16_t srch_timer;
     switch (keycode) {
         case KC_QWERTY:
             if (record->event.pressed) {
@@ -455,6 +463,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_mods(mod_config(MOD_LCTL));
             }
             break;
+        case KC_SRCH:
+            if (record->event.pressed) {
+                srch_timer = timer_read();
+                register_mods(mod_config(MOD_LGUI));
+            } else {
+                if (timer_elapsed(srch_timer) < TAPPING_TERM) {
+                    register_code(KC_F23);
+                }
+                unregister_mods(mod_config(MOD_LGUI));
+            }
+            break;
+            // return false;        // Return false to ignore further processing of key
         case KC_COPY:
             if (record->event.pressed) {
                 register_mods(mod_config(MOD_LCTL));
