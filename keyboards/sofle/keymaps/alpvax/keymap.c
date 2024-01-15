@@ -30,6 +30,7 @@ enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
     KC_COLEMAK,
     KC_GAME,
+    KC_NUMPAD,
     KC_PRVW,
     KC_NXTW,
     KC_LSTT,
@@ -203,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------.                    ,-----------------------------------------------.
  * |       |       |       |       |       |       |                    |       |       |       |       |       |MACWIN|
  * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
- * |QK_BOOT|       | QWERTY|Colemak|  GAME |       |                    |       |       |       |       |       |       |
+ * |QK_BOOT| Numpad| QWERTY|Colemak|  GAME |       |                    |       |       |       |       |       |       |
  * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
  * |       |       |       |       |       |       |                    |       | VOLDN |  MUTE | VOLUP |       |       |
  * |-------+-------+-------+-------+-------+-------|-------.    ,-------|-------+-------+-------+-------+-------+-------|
@@ -214,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_ADJ] = LAYOUT(
    XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                     XXXXXXX,DT_PRNT,DT_DOWN,  DT_UP,XXXXXXX,CG_TOGG,
-   QK_BOOT,XXXXXXX,KC_QWERTY,KC_COLEMAK,KC_GAME,XXXXXXX,                XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
+   QK_BOOT,KC_NUMPAD,KC_QWERTY,KC_COLEMAK,KC_GAME,XXXXXXX,                XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
    XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                     XXXXXXX,KC_VOLD,KC_MUTE,KC_VOLU,XXXXXXX,XXXXXXX,
    XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,     XXXXXXX,XXXXXXX,KC_MPRV,KC_MPLY,KC_MNXT,XXXXXXX,XXXXXXX,
                    _______,_______,_______,_______,_______,     _______,_______,_______,_______,_______
@@ -378,6 +379,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_COLEMAK:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_COLEMAK_DH);
+            }
+            return false;
+        case KC_NUMPAD:
+            if (record->event.pressed) {
+                layer_invert(_NUMPAD);
             }
             return false;
         case KC_GAME:
