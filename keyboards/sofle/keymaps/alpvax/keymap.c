@@ -19,6 +19,8 @@ enum sofle_layers {
     _COLEMAK_DH,
     _QWERTY,
     _GAME,
+    _SHAW_1,
+    // _SHAW_2,
     _NUMPAD,
     _RAISE,
     _LOWER,
@@ -30,6 +32,7 @@ enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
     KC_COLEMAK,
     KC_GAME,
+    KC_SHAW,
     KC_NUMPAD,
     KC_PRVW,
     KC_NXTW,
@@ -39,6 +42,109 @@ enum custom_keycodes {
     KC_SRCH
 };
 
+enum shavian_keys {
+    SHAW_PEEP,      // U+10450:𐑐
+    SHAW_TOT,       // U+10451:𐑑
+    SHAW_KICK,      // U+10452:𐑒
+    SHAW_FEE,       // U+10453:𐑓
+    SHAW_THIGH,     // U+10454:𐑔
+    SHAW_SO,        // U+10455:𐑕
+    SHAW_SURE,      // U+10456:𐑖
+    SHAW_CHURCH,    // U+10457:𐑗
+    SHAW_YEA,       // U+10458:𐑘
+    SHAW_HUNG,      // U+10459:𐑙
+    SHAW_BIB,       // U+1045A:𐑚
+    SHAW_DEAD,      // U+1045B:𐑛
+    SHAW_GAG,       // U+1045C:𐑜
+    SHAW_VOW,       // U+1045D:𐑝
+    SHAW_THEY,      // U+1045E:𐑞
+    SHAW_ZOO,       // U+1045F:𐑟
+
+    SHAW_MEASURE,   // U+10460:𐑠
+    SHAW_JUDGE,     // U+10461:𐑡
+    SHAW_WOE,       // U+10462:𐑢
+    SHAW_HAHA,     // U+10463:𐑣
+    SHAW_LOLL,      // U+10464:𐑤
+    SHAW_MIME,      // U+10465:𐑥
+    SHAW_IF,        // U+10466:𐑦
+    SHAW_EGG,       // U+10467:𐑧
+    SHAW_ASH,       // U+10468:𐑨
+    SHAW_ADO,       // U+10469:𐑩
+    SHAW_ON,        // U+1046A:𐑪
+    SHAW_WOOL,      // U+1046B:𐑫
+    SHAW_OUT,       // U+1046C:𐑬
+    SHAW_AH,        // U+1046D:𐑭
+    SHAW_ROAR,      // U+1046E:𐑮
+    SHAW_NUN,       // U+1046F:𐑯
+
+    SHAW_EAT,       // U+10470:𐑰
+    SHAW_AGE,       // U+10471:𐑱
+    SHAW_ICE,       // U+10472:𐑲
+    SHAW_UP,        // U+10473:𐑳
+    SHAW_OAK,       // U+10474:𐑴
+    SHAW_OOZE,      // U+10475:𐑵
+    SHAW_OIL,       // U+10476:𐑶
+    SHAW_AWE,       // U+10477:𐑷
+    SHAW_ARE,       // U+10478:𐑸
+    SHAW_OR,        // U+10479:𐑹
+    SHAW_AIR,       // U+1047A:𐑺
+    SHAW_ERR,       // U+1047B:𐑻
+    SHAW_ARRAY,     // U+1047C:𐑼
+    SHAW_EAR,       // U+1047D:𐑽
+    SHAW_IAN,       // U+1047E:𐑾
+    SHAW_YEW,       // U+1047F:𐑿
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [SHAW_PEEP] = 0x10450, // 𐑐
+    [SHAW_TOT] = 0x10451, // 𐑑
+    [SHAW_KICK] = 0x10452, // 𐑒
+    [SHAW_FEE] = 0x10453, // 𐑓
+    [SHAW_THIGH] = 0x10454, // 𐑔
+    [SHAW_SO] = 0x10455, // 𐑕
+    [SHAW_SURE] = 0x10456, // 𐑖
+    [SHAW_CHURCH] = 0x10457, // 𐑗
+    [SHAW_YEA] = 0x10458, // 𐑘
+    [SHAW_HUNG] = 0x10459, // 𐑙
+    [SHAW_BIB] = 0x1045A, // 𐑚
+    [SHAW_DEAD] = 0x1045B, // 𐑛
+    [SHAW_GAG] = 0x1045C, // 𐑜
+    [SHAW_VOW] = 0x1045D, // 𐑝
+    [SHAW_THEY] = 0x1045E, // 𐑞
+    [SHAW_ZOO] = 0x1045F, // 𐑟
+    [SHAW_MEASURE] = 0x10460, // 𐑠
+    [SHAW_JUDGE] = 0x10461, // 𐑡
+    [SHAW_WOE] = 0x10462, // 𐑢
+    [SHAW_HAHA] = 0x10463, // 𐑣
+    [SHAW_LOLL] = 0x10464, // 𐑤
+    [SHAW_MIME] = 0x10465, // 𐑥
+    [SHAW_IF] = 0x10466, // 𐑦
+    [SHAW_EGG] = 0x10467, // 𐑧
+    [SHAW_ASH] = 0x10468, // 𐑨
+    [SHAW_ADO] = 0x10469, // 𐑩
+    [SHAW_ON] = 0x1046A, // 𐑪
+    [SHAW_WOOL] = 0x1046B, // 𐑫
+    [SHAW_OUT] = 0x1046C, // 𐑬
+    [SHAW_AH] = 0x1046D, // 𐑭
+    [SHAW_ROAR] = 0x1046E, // 𐑮
+    [SHAW_NUN] = 0x1046F, // 𐑯
+    [SHAW_EAT] = 0x10470, // 𐑰
+    [SHAW_AGE] = 0x10471, // 𐑱
+    [SHAW_ICE] = 0x10472, // 𐑲
+    [SHAW_UP] = 0x10473, // 𐑳
+    [SHAW_OAK] = 0x10474, // 𐑴
+    [SHAW_OOZE] = 0x10475, // 𐑵
+    [SHAW_OIL] = 0x10476, // 𐑶
+    [SHAW_AWE] = 0x10477, // 𐑷
+    [SHAW_ARE] = 0x10478, // 𐑸
+    [SHAW_OR] = 0x10479, // 𐑹
+    [SHAW_AIR] = 0x1047A, // 𐑺
+    [SHAW_ERR] = 0x1047B, // 𐑻
+    [SHAW_ARRAY] = 0x1047C, // 𐑼
+    [SHAW_EAR] = 0x1047D, // 𐑽
+    [SHAW_IAN] = 0x1047E, // 𐑾
+    [SHAW_YEW] = 0x1047F, // 𐑿
+};
 
 /*
  * Layer template
@@ -54,6 +160,13 @@ enum custom_keycodes {
  *                 |  LGUI |  LAlt | LCTRL |/LOWER/  Space |    |  Enter \RAISE\| RCTRL |  RAlt |  RGUI |
  *                 `-----------------------'-----'---------'     `--------'-----'-----------------------'
  */
+// [_KEY] = LAYOUT(
+//     _______,_______,_______,_______,_______,_______,                     _______,_______,_______,_______,_______,_______,
+//     _______,_______,_______,_______,_______,_______,                     _______,_______,_______,_______,_______,_______,
+//     _______,_______,_______,_______,_______,_______,                     _______,_______,_______,_______,_______,_______,
+//     _______,_______,_______,_______,_______,_______,XXXXXXX,     XXXXXXX,_______,_______,_______,_______,_______,_______,
+//                     _______,_______,_______,_______,_______,     _______,_______,_______,_______,_______
+// ),
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -120,6 +233,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_Z,KC_LCTL,   KC_X,   KC_C,   KC_V,   KC_B,XXXXXXX,     XXXXXXX,   KC_N,   KC_M,KC_COMM, KC_DOT,KC_SLSH,KC_RSFT,
                      MO_LWR,KC_LALT,   KC_G,KC_NUBS, KC_SPC,     SFT_RET, MO_RSE,KC_RCTL,KC_RALT,KC_RGUI
 ),
+/*
+ * Shavian layer 1
+ * ,-----------------------------------------------.                    ,-----------------------------------------------.
+ * |   `   |   1   |   2   |   3   |   4   |   5   |                    |   6   |   7   |   8   |   9   |   0   | Delete|
+ * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
+ * |  ESC  |       |   𐑘 𐑢  |  𐑓 𐑝  |  𐑐 𐑚  |  𐑖  𐑠  |                    |  𐑭 𐑸  |  𐑫 𐑵  |  𐑳 𐑿  |      |   ;   |  Bspc |
+ * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
+ * |  TAB  |  𐑨 𐑲  |   𐑮 𐑤  |  𐑕 𐑟  |  𐑑 𐑛  |  𐑗 𐑡  |                    |  𐑧 𐑱  |  𐑥 𐑯  |  𐑩 𐑼  |  𐑦 𐑰  |  𐑪 𐑴  |   '   |
+ * |-------+-------+-------+-------+-------+-------|-------.    ,-------|-------+-------+-------+-------+-------+-------|
+ * | LShift|  𐑷 𐑹  |  𐑻 𐑺  |  𐑒 𐑜  |  𐑔 𐑞  |  𐑾 𐑽 |  N/F  |    |  N/F  |  𐑶 𐑬  |  𐑣 𐑙  |   ,   |   .   |   /   | RShift|
+ * `---------------+-------+-------+-------+-------+-------|    |-------+-------+-------+-------+-------+---------------'
+ *                 |  LGUI |  LAlt | LCTRL |/LOWER/  Space |    |  Enter \RAISE\| RCTRL |  RAlt |  RGUI |
+ *                 `-----------------------'-----'---------'     `--------'-----'-----------------------'
+ */
+[_SHAW_1] = LAYOUT(
+    /*TopRow*/ _______,_______,_______,_______,_______,_______,                     _______,_______,_______,_______,_______,_______,
+    /*Row1:L*/ _______,_______,UP(SHAW_WOE, SHAW_YEW),UP(SHAW_FEE, SHAW_VOW),UP(SHAW_PEEP, SHAW_BIB),UP(SHAW_SURE, SHAW_MEASURE),
+    /*Row1:R*/ UP(SHAW_AH,SHAW_ARE),UP(SHAW_WOOL,SHAW_OOZE),UP(SHAW_UP,SHAW_YEW),_______,_______,_______,
+    /*HomeRow:L*/ _______,UP(SHAW_ASH, SHAW_ICE),UP(SHAW_ROAR, SHAW_LOLL),UP(SHAW_SO,SHAW_ZOO),UP(SHAW_TOT,SHAW_DEAD),UP(SHAW_CHURCH,SHAW_JUDGE),
+    /*HomeRow:R*/ UP(SHAW_EGG,SHAW_AGE),UP(SHAW_NUN,SHAW_MIME),UP(SHAW_ADO,SHAW_ARRAY),UP(SHAW_IF,SHAW_EAT),UP(SHAW_ON,SHAW_OAK),_______,
+    /*Row3:L*/ _______,UP(SHAW_AWE,SHAW_OR),UP(SHAW_ERR,SHAW_AIR),UP(SHAW_KICK,SHAW_GAG),UP(SHAW_THIGH,SHAW_THEY),UP(SHAW_IAN,SHAW_EAR),XXXXXXX,
+    /*Row3:R*/ XXXXXXX,UP(SHAW_OIL,SHAW_OUT),UP(SHAW_HAHA,SHAW_HUNG),_______,_______,_______,_______,
+    /*ModRow*/                _______,_______,_______,_______,_______,     _______,_______,_______,_______,_______
+),
+/*
+ * Shavian layer 2
+ * ,-----------------------------------------------.                    ,-----------------------------------------------.
+ * |   `   |   1   |   2   |   3   |   4   |   5   |                    |   6   |   7   |   8   |   9   |   0   | Delete|
+ * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
+ * |  ESC  |   Q   |   W   |   F   |   P   |   B   |                    |   J   |   L   |   U   |   Y   |   ;   |  Bspc |
+ * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
+ * |  TAB  |   A   |   R   |   S   |   T   |   G   |                    |   M   |   N   |   E   |   I   |   O   |   '   |
+ * |-------+-------+-------+-------+-------+-------|-------.    ,-------|-------+-------+-------+-------+-------+-------|
+ * | LShift|   Z   |   X   |   C   |   D   |   V   |  N/F  |    |  N/F  |   K   |   H   |   ,   |   .   |   /   | RShift|
+ * `---------------+-------+-------+-------+-------+-------|    |-------+-------+-------+-------+-------+---------------'
+ *                 |  LGUI |  LAlt | LCTRL |/LOWER/  Space |    |  Enter \RAISE\| RCTRL |  RAlt |  RGUI |
+ *                 `-----------------------'-----'---------'     `--------'-----'-----------------------'
+ */
+// [_SHAW_2] = LAYOUT(
+//     _______,_______,_______,_______,_______,_______,                     _______,_______,_______,_______,_______,_______,
+//     _______,_______,_______,_______,_______,_______,                     _______,_______,_______,_______,_______,_______,
+//     _______,_______,_______,_______,_______,_______,                     _______,_______,_______,_______,_______,_______,
+//     _______,_______,_______,_______,_______,_______,_______,     _______,_______,_______,_______,_______,_______,_______,
+//                     _______,_______,_______,_______,_______,     _______,_______,_______,_______,_______
+// ),
 /* NUMPAD
  * ,-----------------------------------------------.                    ,-----------------------------------------------.
  * |       |       |       |       |       |       |                    |       |   D   |   E   |   F   |       |       |
@@ -202,11 +360,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* ADJUST
  * ,-----------------------------------------------.                    ,-----------------------------------------------.
- * |       |       |       |       |       |       |                    |       |       |       |       |       |MACWIN|
+ * |       |       |       |       |       |       |                    |dyn tap| dt_up | dt_dn |UC_PREV|UC_NEXT|MACWIN|
  * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
  * |QK_BOOT| Numpad| QWERTY|Colemak|  GAME |       |                    |       |       |       |       |       |       |
  * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
- * |       |       |       |       |       |       |                    |       | VOLDN |  MUTE | VOLUP |       |       |
+ * |       |       |       |Shavian|       |       |                    |       | VOLDN |  MUTE | VOLUP |       |       |
  * |-------+-------+-------+-------+-------+-------|-------.    ,-------|-------+-------+-------+-------+-------+-------|
  * |       |       |       |       |       |       |  N/F  |    |  N/F  |       |  PREV |  PLAY |  NEXT |       |       |
  * `---------------+-------+-------+-------+-------+-------|    |-------+-------+-------+-------+-------+---------------'
@@ -214,9 +372,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                 `-----------------------'-----'---------'     `--------'-----'-----------------------'
  */
   [_ADJ] = LAYOUT(
-   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                     XXXXXXX,DT_PRNT,DT_DOWN,  DT_UP,XXXXXXX,CG_TOGG,
+   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                     DT_PRNT,DT_UP  ,DT_DOWN,UC_PREV,UC_NEXT,CG_TOGG,
    QK_BOOT,KC_NUMPAD,KC_QWERTY,KC_COLEMAK,KC_GAME,XXXXXXX,                XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
-   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                     XXXXXXX,KC_VOLD,KC_MUTE,KC_VOLU,XXXXXXX,XXXXXXX,
+   XXXXXXX,XXXXXXX,XXXXXXX,KC_SHAW,XXXXXXX,XXXXXXX,                     XXXXXXX,KC_VOLD,KC_MUTE,KC_VOLU,XXXXXXX,XXXXXXX,
    XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,     XXXXXXX,XXXXXXX,KC_MPRV,KC_MPLY,KC_MNXT,XXXXXXX,XXXXXXX,
                    _______,_______,_______,_______,_______,     _______,_______,_______,_______,_______
   )
@@ -270,6 +428,9 @@ static void print_status_common(void) {
         case _GAME:
             oled_write_P(PSTR("Game "), false);
             break;
+        case _SHAW_1:
+            oled_write_P(PSTR("𐑖𐑲𐑝𐑾𐑥"), false);
+            break;
         default:
             oled_write_P(PSTR("Undef"), false);
     }
@@ -278,6 +439,7 @@ static void print_status_common(void) {
     switch (get_highest_layer(layer_state)) {
         case _COLEMAK_DH:
         case _QWERTY:
+        case _SHAW_1:
             oled_write_P(PSTR("Base "), false);
             break;
         case _RAISE:
@@ -299,12 +461,12 @@ static void print_status_common(void) {
             oled_write_P(PSTR("Undef"), false);
     }
     oled_advance_page(true);
-    oled_advance_page(true);
 }
 
 static void print_status_narrow(void) {
     print_status_common();
     led_t led_usb_state = host_keyboard_led_state();
+    oled_advance_page(true);
     oled_advance_page(true);
     oled_advance_page(true);
     oled_advance_page(true);
@@ -327,6 +489,24 @@ static void print_status_narrow_ADJ(void) {
         oled_write_ln_P(PSTR(" MAC"), false);
     } else {
         oled_write_ln_P(PSTR(" WIN"), false);
+    }
+    switch (get_unicode_input_mode()) {
+        case UNICODE_MODE_MACOS:	    // macOS input
+            oled_write_P(PSTR(" MAC"), false);
+            break;
+        case UNICODE_MODE_LINUX:	    // Linux input
+            oled_write_P(PSTR(" Lin"), false);
+            break;
+        case UNICODE_MODE_WINDOWS:	// Windows input
+            oled_write_P(PSTR(" Win"), false);
+            break;
+        case UNICODE_MODE_WINCOMPOSE:// Windows input using WinCompose
+            oled_write_P(PSTR(" WinC"), false);
+            break;
+        // case UNICODE_MODE_EMACS:	    // emacs (C-x-8 RET) input
+        // case UNICODE_MODE_BSD:	    // BSD input (not implemented)
+        default:
+            oled_advance_page(true);
     }
     oled_write_P(PSTR("\nBUILD"), false);
     char s[6] = {0,0,0,0,0,0};
@@ -381,14 +561,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_COLEMAK_DH);
             }
             return false;
-        case KC_NUMPAD:
-            if (record->event.pressed) {
-                layer_invert(_NUMPAD);
-            }
-            return false;
         case KC_GAME:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_GAME);
+            }
+            return false;
+        case KC_SHAW:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_SHAW_1);
+            }
+            return false;
+        case KC_NUMPAD:
+            if (record->event.pressed) {
+                layer_invert(_NUMPAD);
             }
             return false;
         case KC_PRVW:
