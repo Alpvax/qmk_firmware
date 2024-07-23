@@ -429,7 +429,7 @@ static void print_status_common(void) {
             oled_write_P(PSTR("Game "), false);
             break;
         case _SHAW_1:
-            oled_write_P(PSTR("𐑖𐑲𐑝𐑾𐑥"), false);
+            oled_write_P(PSTR("Shaw "), false);
             break;
         default:
             oled_write_P(PSTR("Undef"), false);
