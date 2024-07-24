@@ -1,0 +1,59 @@
+#pragma once
+
+// Use with glcdfont_shaw.c
+#define CHAR_SHAW_PEEP 0x98
+#define CHAR_SHAW_TOT 0x99
+#define CHAR_SHAW_KICK 0x9A
+#define CHAR_SHAW_FEE 0x9B
+#define CHAR_SHAW_THIGH 0x9C
+#define CHAR_SHAW_SO 0x9D
+#define CHAR_SHAW_SURE 0x9E
+#define CHAR_SHAW_CHURCH 0x9F
+
+#define CHAR_SHAW_YEA 0xAE
+#define CHAR_SHAW_HUNG 0xAF
+#define CHAR_SHAW_BIB 0xB0
+#define CHAR_SHAW_DEAD 0xB1
+
+#define CHAR_SHAW_GAG 0xB8
+#define CHAR_SHAW_VOW 0xB9
+#define CHAR_SHAW_THEY 0xBA
+#define CHAR_SHAW_ZOO 0xBB
+#define CHAR_SHAW_MEASURE 0xBC
+#define CHAR_SHAW_JUDGE 0xBD
+#define CHAR_SHAW_WOE 0xBE
+#define CHAR_SHAW_HAHA 0xBF
+
+#define CHAR_SHAW_LOLL 0xC4
+
+#define CHAR_SHAW_MIME 0xC6
+#define CHAR_SHAW_IF 0xC7
+#define CHAR_SHAW_EGG 0xC8
+#define CHAR_SHAW_ASH 0xC9
+#define CHAR_SHAW_ADO 0xCA
+#define CHAR_SHAW_ON 0xCB
+#define CHAR_SHAW_WOOL 0xCC
+#define CHAR_SHAW_OUT 0xCD
+#define CHAR_SHAW_AH 0xCE
+#define CHAR_SHAW_ROAR 0xCF
+#define CHAR_SHAW_NUN 0xD0
+#define CHAR_SHAW_EAT 0xD1
+#define CHAR_SHAW_AGE 0xD2
+#define CHAR_SHAW_ICE 0xD3
+#define CHAR_SHAW_UP 0xD4
+
+#define CHAR_SHAW_OAK 0x6F // Just use 'o'
+
+#define CHAR_SHAW_OOZE 0xD5
+#define CHAR_SHAW_OIL 0xD6
+#define CHAR_SHAW_AWE 0xD7
+#define CHAR_SHAW_ARE 0xD8
+#define CHAR_SHAW_OR 0xD9
+#define CHAR_SHAW_AIR 0xDA
+#define CHAR_SHAW_ERR 0xDB
+#define CHAR_SHAW_ARRAY 0xDC
+#define CHAR_SHAW_EAR 0xDD
+#define CHAR_SHAW_IAN 0xDE
+#define CHAR_SHAW_YEW 0xDF
+
+static const char PROGMEM SHAVIAN_WORD[] = { CHAR_SHAW_SURE, CHAR_SHAW_AGE, CHAR_SHAW_VOW, CHAR_SHAW_IAN, CHAR_SHAW_NUN, 0x20, 0 };
