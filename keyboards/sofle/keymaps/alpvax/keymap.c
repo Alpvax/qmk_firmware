@@ -95,6 +95,8 @@ enum shavian_keys {
     SHAW_EAR,       // U+1047D:𐑽
     SHAW_IAN,       // U+1047E:𐑾
     SHAW_YEW,       // U+1047F:𐑿
+
+    MIDDLE_DOT,     // U+00B7: ·
 };
 
 const uint32_t PROGMEM unicode_map[] = {
@@ -146,6 +148,8 @@ const uint32_t PROGMEM unicode_map[] = {
     [SHAW_EAR] = 0x1047D, // 𐑽
     [SHAW_IAN] = 0x1047E, // 𐑾
     [SHAW_YEW] = 0x1047F, // 𐑿
+
+    [MIDDLE_DOT] = 0x00B7, // ·
 };
 
 /*
@@ -240,7 +244,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------.                    ,-----------------------------------------------.
  * |   `   |   1   |   2   |   3   |   4   |   5   |                    |   6   |   7   |   8   |   9   |   0   | Delete|
  * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
- * |  ESC  |       |   𐑘 𐑢  |  𐑓 𐑝  |  𐑐 𐑚  |  𐑖  𐑠  |                    |  𐑭 𐑸  |  𐑫 𐑵  |  𐑳 𐑿  |      |   ;   |  Bspc |
+ * |  ESC  |       |   𐑘 𐑢  |  𐑓 𐑝  |  𐑐 𐑚  |  𐑖  𐑠  |                    |  𐑭 𐑸  |  𐑫 𐑵  |  𐑳 𐑿  |  ·   |   ;   |  Bspc |
  * |-------+-------+-------+-------+-------+-------|                    |-------+-------+-------+-------+-------+-------|
  * |  TAB  |  𐑨 𐑲  |   𐑮 𐑤  |  𐑕 𐑟  |  𐑑 𐑛  |  𐑗 𐑡  |                    |  𐑧 𐑱  |  𐑥 𐑯  |  𐑩 𐑼  |  𐑦 𐑰  |  𐑪 𐑴  |   '   |
  * |-------+-------+-------+-------+-------+-------|-------.    ,-------|-------+-------+-------+-------+-------+-------|
@@ -251,8 +255,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_SHAW_1] = LAYOUT(
     /*TopRow*/ _______,_______,_______,_______,_______,_______,                     _______,_______,_______,_______,_______,_______,
-    /*Row1:L*/ _______,_______,UP(SHAW_WOE, SHAW_YEW),UP(SHAW_FEE, SHAW_VOW),UP(SHAW_PEEP, SHAW_BIB),UP(SHAW_SURE, SHAW_MEASURE),
-    /*Row1:R*/ UP(SHAW_AH,SHAW_ARE),UP(SHAW_WOOL,SHAW_OOZE),UP(SHAW_UP,SHAW_YEW),_______,_______,_______,
+    /*Row1:L*/ _______,_______,UP(SHAW_WOE, SHAW_YEA),UP(SHAW_FEE, SHAW_VOW),UP(SHAW_PEEP, SHAW_BIB),UP(SHAW_SURE, SHAW_MEASURE),
+    /*Row1:R*/ UP(SHAW_AH,SHAW_ARE),UP(SHAW_WOOL,SHAW_OOZE),UP(SHAW_UP,SHAW_YEW),UM(MIDDLE_DOT),_______,_______,
     /*HomeRow:L*/ _______,UP(SHAW_ASH, SHAW_ICE),UP(SHAW_ROAR, SHAW_LOLL),UP(SHAW_SO,SHAW_ZOO),UP(SHAW_TOT,SHAW_DEAD),UP(SHAW_CHURCH,SHAW_JUDGE),
     /*HomeRow:R*/ UP(SHAW_EGG,SHAW_AGE),UP(SHAW_NUN,SHAW_MIME),UP(SHAW_ADO,SHAW_ARRAY),UP(SHAW_IF,SHAW_EAT),UP(SHAW_ON,SHAW_OAK),_______,
     /*Row3:L*/ _______,UP(SHAW_AWE,SHAW_OR),UP(SHAW_ERR,SHAW_AIR),UP(SHAW_KICK,SHAW_GAG),UP(SHAW_THIGH,SHAW_THEY),UP(SHAW_IAN,SHAW_EAR),XXXXXXX,
