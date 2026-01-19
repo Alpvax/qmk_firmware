@@ -516,6 +516,8 @@ static void print_status_narrow_ADJ(void) {
             oled_advance_page(true);
     }
     oled_write_P(PSTR("\nBUILD"), false);
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wstringop-truncation"
     char s[6] = {0,0,0,0,0,0};
     strncpy(s, QMK_BUILDDATE, 5);
     oled_write(s, false);
@@ -523,6 +525,7 @@ static void print_status_narrow_ADJ(void) {
     oled_write(s, false);
     strncpy(s, QMK_BUILDDATE + 11, 5);
     oled_write(s, false);
+    #pragma GCC diagnostic pop
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
