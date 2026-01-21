@@ -1,1 +1,1 @@
-include keyboards/mechboards/common/post_rules.mk
+# include keyboards/mechboards/common/post_rules.mk

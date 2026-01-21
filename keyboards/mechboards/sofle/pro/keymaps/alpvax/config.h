@@ -6,6 +6,7 @@
 see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 for more options.
 */
+#define MASTER_LEFT
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
@@ -18,4 +19,4 @@ for more options.
 
 #define UNICODE_SELECTED_MODES UNICODE_MODE_WINCOMPOSE, UNICODE_MODE_LINUX
 
-#define ENCODER_RESOLUTION 2
+#define RGB_MATRIX_DISABLE_SHARED_KEYCODES
